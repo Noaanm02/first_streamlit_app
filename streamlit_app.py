@@ -35,7 +35,7 @@ def get_fruityvice_data(this_fruit_choice):
   return fruityvice_normalized
   
 try:
-  fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+  fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
     streamlit.error("Please select a fruit to get information")
   else:
@@ -59,7 +59,7 @@ if streamlit.button('Get Fruit Load List'):
 
 def insert_row_snowflake(new_fruit):
   with my_cnx.cursor() as my_cur:
-    my_cur.execute("insert into fruit_load_list values('from streamlit')")
+    my_cur.execute("insert into fruit_load_list values('"+new_fruit+"')")
     return"Thanks for adding"+ new_fruit
   
 add_my_fruit = streamlit.text_input("What fruit would you like to add")
